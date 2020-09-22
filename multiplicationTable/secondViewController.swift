@@ -21,10 +21,13 @@ class secondViewController: UIViewController {
                 let label = UILabel(frame: CGRect(x: x, y: y, width: width, height: width))
                 if i == 0, j == 0 {
                     label.text = "X"
+                    label.font = UIFont.boldSystemFont(ofSize: 17)
                 }else if i != 0, j == 0 {
                     label.text = "\(i)"
+                    label.font = UIFont.boldSystemFont(ofSize: 17)
                 }else if i == 0, j != 0 {
                     label.text = "\(j)"
+                    label.font = UIFont.boldSystemFont(ofSize: 17)
                 }else if j == 9 || (i>1 && i<5 && i+j == 10) || (j >= 5 && i == j)  {
                     label.text = "\(j*i)"
                     label.backgroundColor = UIColor(
