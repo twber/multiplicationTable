@@ -63,26 +63,41 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        multipliValue()
+        //multipliValue()
         numberLabel.textAlignment = .center
-    }
-        /*for i in 1...9{
-            for j in 1...9{
-                if i == 9 || (j > 1 && j<5 && i+j == 10) || (i >= 5 && i == j)  {
-                    content += " " + "\(i*j)" + ""
-                    content += "\t"
-                }else{
-                    content += " " + "🍎" + ""
-                    content += "\t"
-                }
-            }
-            content += "\n"
-        }
-        numberLabel.text = content
-        numberLabel.textAlignment = .center
-    
-    }*/
+        var content: NSMutableAttributedString = NSMutableAttributedString()
+        for i in 1...9{
+         for j in 1...9{
+             let string: String
+             let attributes: [NSMutableAttributedString.Key: Any]
+             if i == 9 || (j > 1 && j<5 && i+j == 10) || (i >= 5 && i == j)  {
+                 string = " \(i*j)\t"
+                 attributes = [
+                     .foregroundColor: UIColor.black,
+                     .backgroundColor: UIColor(
+                         red:   .random(in: 0...1),
+                         green: .random(in: 0...1),
+                         blue:  .random(in: 0...1),
+                         alpha: 1.0
+                      ),
+                     .font: UIFont.boldSystemFont(ofSize: 17)
+                 ]
+             }else{
+                 string = " \(i*j)\t"
+                 attributes = [
+                     //.kern: 5,
+                     .foregroundColor: UIColor.black,
+                     .backgroundColor: UIColor.white,
+                     .font: UIFont.boldSystemFont(ofSize: 17)
+                 ]
+             }
+             let attributedStringToAppend = NSMutableAttributedString(string: string, attributes: attributes)
+             content.append(attributedStringToAppend)
+         }
+         content.append(NSAttributedString(string: "\n"))
+     }
+        numberLabel.attributedText = content
 }
-
+}
 
 
